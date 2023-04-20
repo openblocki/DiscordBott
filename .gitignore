@@ -2,3 +2,4 @@ config/token.py
 bin/
 .idea/
 lib/
+apps/commands/joinvoice.py

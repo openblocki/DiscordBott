@@ -3,7 +3,6 @@ from nextcord.ext import commands
 
 
 class calc(commands.Cog):
-
     result = "Nil"
     buffermsg = ""
 
@@ -15,22 +14,33 @@ class calc(commands.Cog):
         description="A Calculator, reinventing Math",
         force_global=True
     )
-    async def clc(self, ctx: nextcord.Interaction, operator: str, x: int, y: int):
+    async def clc(
+            self,
+            ctx: nextcord.Interaction,
+            operator: str = nextcord.SlashOption(
+                description="Select Operator",
+                choices={"add": "add", "subs": "subs", "mult": "mult", "div": "div"}
+            ),
+            x: int = nextcord.SlashOption(
+                description="Select First"
+            ),
+            y: int = nextcord.SlashOption(
+                description="Select Second"
+            )
+    ) -> None:
 
-        if operator == ("add" or "addition"):
-            self.result = x + y
-        elif operator == ("substract" or "substraction" or "subs"):
-            self.result = x - y
-        elif operator == ("mult" or "multiply" or "multiplication"):
-            self.result = x * y
-        elif operator == ("div" or "division" or "divide"):
-            self.result = x / y
-        else:
-            self.buffermsg = "Uh oh, thoust haveth done goofed. : "
+        match operator:
+            case "add":
+                self.result = x + y
+            case "subs":
+                self.result = x - y
+            case "mult":
+                self.result = x * y
+            case "div":
+                self.result = x / y
 
-        await ctx.send(self.buffermsg + str(self.result))
+        await ctx.send(str(self.result))
         self.result = "Nil"
-        self.buffermsg = ""
 
 
 def setup(bot):

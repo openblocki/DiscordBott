@@ -1,1 +1,2 @@
 nextcord
+wikipedia-api

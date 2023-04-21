@@ -1,11 +1,15 @@
 import nextcord
 from nextcord.ext import commands
 
+from nextcord import opus
+
 
 class joinvc(commands.Cog):
 
     def __init__(self, bot: commands.Bot):
         self.bot = bot
+        
+        nextcord.opus.load_opus()
 
     @nextcord.slash_command(
         name="join",

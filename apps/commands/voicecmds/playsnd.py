@@ -8,7 +8,7 @@ class playsnd(commands.Cog):
         self.bot = bot
 
     @nextcord.slash_command(
-        name="ply",
+        name="play",
         description="Its to test things ja fucking knobhead, what did you expect",
         force_global=True
     )

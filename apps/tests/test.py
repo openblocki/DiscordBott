@@ -13,7 +13,8 @@ class test(commands.Cog):
         force_global=True
     )
     async def tst(self, ctx: nextcord.Interaction):
-
+        channel = nextcord.utils.get(ctx.guild.channels, id=743067601940512888)
+        await ctx.send(str(nextcord.VoiceClient(self.bot, channel).channel))
         await ctx.send("test")
 
 

@@ -14,7 +14,7 @@ class test(commands.Cog):
     )
     async def tst(self, ctx: nextcord.Interaction):
         channel = nextcord.utils.get(ctx.guild.channels, id=743067601940512888)
-        await ctx.send(str(nextcord.VoiceClient(self.bot, channel).channel))
+        await ctx.send(str(nextcord.VoiceClient(self.bot, channel).is_connected()))
         await ctx.send("test")
 
 

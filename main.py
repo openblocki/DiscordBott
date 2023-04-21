@@ -32,7 +32,7 @@ class main(commands.Bot):
             print(f'We have logged in as {self.user}')
             channel = self.get_channel(743067601437065221)
             await channel.send("I have arrived [not nutted]")
-            await channel.send(str(opus.is_loaded()))
+            await channel.send("Opus Loaded: "+ str(opus.is_loaded()))
 
         # start Bot
         self.run(tkn.token())

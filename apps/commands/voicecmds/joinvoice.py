@@ -1,6 +1,6 @@
 import nextcord
 from nextcord.ext import commands
-
+import asyncio
 
 class joinvc(commands.Cog):
 
@@ -13,13 +13,17 @@ class joinvc(commands.Cog):
         force_global=True
     )
     async def jvc(self, ctx: nextcord.Interaction):
-        channel = nextcord.utils.get(ctx.guild.channels, id=743067601940512888)
-        print("fetching audio file")
-        print("connecting")
-        await nextcord.VoiceClient(self.bot, channel).connect(
-            reconnect=True,
-            timeout=60.0
-        )
+        voice_channel = ctx.user.voice.channel
+        voice_client: nextcord.VoiceClient = await voice_channel.connect()
+        audio_file = nextcord.FFmpegPCMAudio("mats/sounds/mpfall.mp3")
+        if not voice_client.is_playing():
+            voice_client.play(audio_file)
+            await ctx.send("Playing...")
+            while voice_client.is_playing():
+                await asyncio.sleep(1)
+            await voice_client.disconnect()
+        else:
+            await ctx.send("Stop, you're violating time and space")
 
 
 def setup(bot):

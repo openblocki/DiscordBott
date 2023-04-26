@@ -2,6 +2,7 @@ import nextcord
 from nextcord.ext import commands
 import asyncio
 
+
 class joinvc(commands.Cog):
 
     def __init__(self, bot: commands.Bot):

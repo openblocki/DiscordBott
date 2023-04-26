@@ -1,5 +1,6 @@
 import nextcord
 from nextcord.ext import commands
+from src.logging.logging import Logging
 
 
 class calc(commands.Cog):
@@ -28,6 +29,8 @@ class calc(commands.Cog):
                 description="Select Second"
             )
     ) -> None:
+
+        await Logging("Calc", self.bot, ctx).log()
 
         match operator:
             case "add":

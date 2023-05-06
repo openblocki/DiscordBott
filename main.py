@@ -1,12 +1,12 @@
 import nextcord
 from nextcord.ext import commands
 import os
-from config.token import tkn
+from config.token import Token
 from nextcord import opus
 OPUS_LIBS = ['libopus-0.x86.dll', 'libopus-0.x64.dll', 'libopus-0.dll', 'libopus.so.0', 'libopus.0.dylib']
 
 
-class main(commands.Bot):
+class Main(commands.Bot):
     def __init__(self):
         super().__init__(intents=nextcord.Intents.all())
         # Remove built-in help command because trash
@@ -34,13 +34,8 @@ class main(commands.Bot):
             await channel.send("I have arrived [not nutted]")
             await channel.send("Opus Loaded: " + str(opus.is_loaded()))
 
-        # @self.event
-        # async def on_interaction(ctx: nextcord.Interaction) -> None:
-        #     chl = self.get_channel(1100427923787362334)
-        #     await chl.send(str(ctx))
-
         # start Bot
-        self.run(tkn.token())
+        self.run(Token.token())
 
 
-main()
+Main()

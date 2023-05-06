@@ -1,6 +1,7 @@
+import nextcord
 from nextcord import Message
 from nextcord.ext import commands
-import nextcord
+
 
 class Logging:
     def __init__(self, cmd_name: str, bot: commands.Bot, ctx: nextcord.Interaction):

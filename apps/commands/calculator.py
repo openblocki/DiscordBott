@@ -3,19 +3,19 @@ from nextcord.ext import commands
 from src.logging.logging import Logging
 
 
-class calc(commands.Cog):
-    result = "Nil"
-    buffermsg = ""
+class Calculator(commands.Cog):
+    RESULT = "NIL"
+    BUFFER_MESSAGE = ""
 
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
     @nextcord.slash_command(
-        name="calc",
+        name="Calculate",
         description="A Calculator, reinventing Math",
         force_global=True
     )
-    async def clc(
+    async def calculate(
             self,
             ctx: nextcord.Interaction,
             operator: str = nextcord.SlashOption(
@@ -30,21 +30,21 @@ class calc(commands.Cog):
             )
     ) -> None:
 
-        await Logging("Calc", self.bot, ctx).log()
+        await Logging("Calculator", self.bot, ctx).log()
 
         match operator:
             case "add":
-                self.result = x + y
+                self.RESULT = x + y
             case "subs":
-                self.result = x - y
+                self.RESULT = x - y
             case "mult":
-                self.result = x * y
+                self.RESULT = x * y
             case "div":
-                self.result = x / y
+                self.RESULT = x / y
 
-        await ctx.send(str(self.result))
-        self.result = "Nil"
+        await ctx.send(str(self.RESULT))
+        self.RESULT = "Nil"
 
 
 def setup(bot):
-    bot.add_cog(calc(bot))
+    bot.add_cog(Calculator(bot))

@@ -3,7 +3,7 @@ from nextcord.ext import commands
 import asyncio
 
 
-class joinvc(commands.Cog):
+class JoinVoice(commands.Cog):
 
     def __init__(self, bot: commands.Bot):
         self.bot = bot
@@ -13,10 +13,12 @@ class joinvc(commands.Cog):
         description="Make the Bot join the VC",
         force_global=True
     )
-    async def jvc(self, ctx: nextcord.Interaction):
+    async def joinvoice(self, ctx: nextcord.Interaction):
+
         voice_channel = ctx.user.voice.channel
         voice_client: nextcord.VoiceClient = await voice_channel.connect()
         audio_file = nextcord.FFmpegPCMAudio("mats/sounds/mpfall.mp3")
+
         if not voice_client.is_playing():
             voice_client.play(audio_file)
             await ctx.send("Playing...")
@@ -28,4 +30,4 @@ class joinvc(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(joinvc(bot))
+    bot.add_cog(JoinVoice(bot))

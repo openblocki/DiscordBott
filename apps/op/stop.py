@@ -2,7 +2,7 @@ import nextcord
 from nextcord.ext import commands
 
 
-class stop(commands.Cog):
+class Stop(commands.Cog):
 
     def __init__(self, bot: commands.Bot):
         self.bot = bot
@@ -19,4 +19,4 @@ class stop(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(stop(bot))
+    bot.add_cog(Stop(bot))

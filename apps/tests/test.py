@@ -2,7 +2,7 @@ import nextcord
 from nextcord.ext import commands
 
 
-class test(commands.Cog):
+class Test(commands.Cog):
 
     def __init__(self, bot: commands.Bot):
         self.bot = bot
@@ -17,4 +17,4 @@ class test(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(test(bot))
+    bot.add_cog(Test(bot))
